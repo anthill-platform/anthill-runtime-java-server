@@ -10,7 +10,7 @@
 	<groupId>com.github.anthill-services</groupId>
 	<artifactId>anthill-runtime-java-server</artifactId>
 	<packaging>jar</packaging>
-	<version>0.1</version>
+	<version>0.1.2</version>
 
 	<name>OnlileLib Server</name>
 	<description>Server extention for Java Runtime for Anthill Platform</description>
@@ -97,12 +97,18 @@
 		<dependency>
 			<groupId>com.github.anthill-services</groupId>
 			<artifactId>anthill-runtime-java</artifactId>
-			<version>0.1</version>
+			<version>0.1.2</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.zeromq</groupId>
 			<artifactId>jzmq</artifactId>
+			<version>3.1.1-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.zeromq</groupId>
+			<artifactId>jzmq-jni</artifactId>
 			<version>3.1.1-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>

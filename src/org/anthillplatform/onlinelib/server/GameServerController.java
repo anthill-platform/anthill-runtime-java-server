@@ -32,7 +32,7 @@ public abstract class GameServerController
 
     public interface PlayerJoinedHandler
     {
-        void result(boolean success, AccessToken token);
+        void result(boolean success, AccessToken token, JSONObject info);
     }
 
     public interface PlayerLeftHandler
@@ -157,14 +157,15 @@ public abstract class GameServerController
             public void success(Object response)
             {
                 String token = ((JSONObject) response).getString("access_token");
-                handler.result(true, new AccessToken(token));
+                JSONObject info = ((JSONObject) response).optJSONObject("info");
+                handler.result(true, new AccessToken(token), info);
             }
 
             @Override
             public void error(int code, String message, String data)
             {
                 logError("Error while joining: " + code + " " + message + " " + data);
-                handler.result(false, null);
+                handler.result(false, null, null);
             }
         }, params);
     }
