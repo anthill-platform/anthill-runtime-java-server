@@ -69,7 +69,7 @@ allprojects {
 
 ```
 dependencies {
-    compile 'com.github.anthill-services:anthill-runtime-java-server:0.1.4'
+    compile 'com.github.anthill-platform:anthill-runtime-java-server:0.1.4'
 }
 ```
 
@@ -90,7 +90,7 @@ dependencies {
 
 ```xml
 <dependency>
-    <groupId>com.github.anthill-services</groupId>
+    <groupId>com.github.anthill-platform</groupId>
     <artifactId>anthill-runtime-java-server</artifactId>
     <version>0.1.4</version>
 </dependency>
