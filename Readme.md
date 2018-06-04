@@ -52,6 +52,33 @@ ServerController.inited(settings, new GameServerController.InitedHandler()
 
 ## Installation
 
+You would need to install [JZMQ](https://github.com/zeromq/jzmq) first:
+
+Install build tools first (assuming Debian):
+```
+apt install -y g++ pkg-config libtool autoconf automake make
+```
+
+Next, install the zmq library:
+```
+apt install -y libzmq3-dev 
+```
+
+Next, install the jzmq into the local maven:
+```
+git clone https://github.com/zeromq/jzmq.git
+cd jzmq/jzmq-jni/
+./autogen.sh
+./configure --prefix=/usr
+make
+make install
+cd ..
+mvn install -Dgpg.skip=true
+```
+
+You would also need to set `JAVA_LIBRARY_PATH` environment variable to 
+`/usr/lib` for the application to work.
+
 #### Gradle
 
 1. Add the JitPack repository to your `build.gradle` file
@@ -69,7 +96,7 @@ allprojects {
 
 ```
 dependencies {
-    compile 'com.github.anthill-platform:anthill-runtime-java-server:0.1.4'
+    compile 'com.github.anthill-platform:anthill-runtime-java-server:0.1.6'
 }
 ```
 
@@ -92,6 +119,6 @@ dependencies {
 <dependency>
     <groupId>com.github.anthill-platform</groupId>
     <artifactId>anthill-runtime-java-server</artifactId>
-    <version>0.1.4</version>
+    <version>0.1.6</version>
 </dependency>
 ```

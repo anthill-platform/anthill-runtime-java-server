@@ -1,14 +1,16 @@
-package org.anthillplatform.onlinelib.server;
+package org.anthillplatform.runtime.server;
 
-import org.anthillplatform.onlinelib.entity.AccessToken;
-import org.anthillplatform.onlinelib.services.GameService;
-import org.anthillplatform.onlinelib.services.LoginService;
-import org.anthillplatform.onlinelib.util.JsonRPC;
+import org.anthillplatform.runtime.services.GameService;
+import org.anthillplatform.runtime.services.LoginService;
+import org.anthillplatform.runtime.util.JsonRPC;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
 
 import java.nio.charset.Charset;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Game Server Controller
@@ -32,7 +34,9 @@ public abstract class GameServerController
 
     public interface PlayerJoinedHandler
     {
-        void result(boolean success, AccessToken token, JSONObject info);
+        void result(boolean success, LoginService.AccessToken token,
+                    String account, String credential,
+                    LoginService.Scopes scopes, JSONObject info);
     }
 
     public interface PlayerLeftHandler
@@ -134,9 +138,10 @@ public abstract class GameServerController
      * @param extendScopes see extendToken
      * @param handler Callback with call response
      */
-    public void joined(String key, AccessToken extendToken, String extendScopes, final PlayerJoinedHandler handler)
+    public void joined(String key, LoginService.AccessToken extendToken, String extendScopes,
+        final PlayerJoinedHandler handler)
     {
-        LoginService loginService = LoginService.get();
+        final LoginService loginService = LoginService.Get();
 
         if (loginService == null)
             throw new RuntimeException("No login service!");
@@ -147,7 +152,7 @@ public abstract class GameServerController
 
         if (extendToken != null && extendScopes != null)
         {
-            params.put("extend_token", extendToken.getToken());
+            params.put("extend_token", extendToken.get());
             params.put("extend_scopes", extendScopes);
         }
 
@@ -156,16 +161,28 @@ public abstract class GameServerController
             @Override
             public void success(Object response)
             {
-                String token = ((JSONObject) response).getString("access_token");
+                String raw = ((JSONObject) response).getString("access_token");
+
+                JSONArray scopes_ = ((JSONObject) response).optJSONArray("scopes");
+                LoginService.Scopes scopes = new LoginService.Scopes();
+
+                for (int i = 0, t = scopes_.length(); i < t; i++)
+                {
+                    scopes.add(scopes_.getString(i));
+                }
+
+                String account = ((JSONObject) response).optString("account");
+                String credential = ((JSONObject) response).optString("credential");
+
                 JSONObject info = ((JSONObject) response).optJSONObject("info");
-                handler.result(true, new AccessToken(token), info);
+                handler.result(true, loginService.newAccessToken(raw), account, credential, scopes, info);
             }
 
             @Override
             public void error(int code, String message, String data)
             {
                 logError("Error while joining: " + code + " " + message + " " + data);
-                handler.result(false, null, null);
+                handler.result(false, null, null, null, null, null);
             }
         }, params);
     }
