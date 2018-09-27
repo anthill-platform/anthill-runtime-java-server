@@ -78,13 +78,13 @@
 			</activation>
 			<dependencies>
 				<dependency>
-					<groupId>com.github.anthill-utils</groupId>
+					<groupId>com.github.anthill-utils.jzmq</groupId>
 					<artifactId>jzmq</artifactId>
 					<version>3.1.2</version>
 					<scope>compile</scope>
 				</dependency>
 				<dependency>
-					<groupId>com.github.anthill-utils</groupId>
+					<groupId>com.github.anthill-utils.jzmq</groupId>
 					<artifactId>jzmq-jni</artifactId>
 					<version>3.1.2</version>
 					<scope>compile</scope>
