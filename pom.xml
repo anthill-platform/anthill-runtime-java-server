@@ -36,12 +36,12 @@
 
  	<repositories>
 		<repository>
-			<id>clojars.org</id>
-			<url>http://clojars.org/repo</url>
-		</repository>
-		<repository>
 			<id>jitpack.io</id>
 			<url>https://jitpack.io</url>
+		</repository>
+		<repository>
+			<id>clojars.org</id>
+			<url>http://clojars.org/repo</url>
 		</repository>
 	</repositories>
 
@@ -78,15 +78,15 @@
 			</activation>
 			<dependencies>
 				<dependency>
-					<groupId>org.zeromq</groupId>
+					<groupId>com.github.anthill-utils</groupId>
 					<artifactId>jzmq</artifactId>
-					<version>3.1.1-SNAPSHOT</version>
+					<version>3.1.2</version>
 					<scope>compile</scope>
 				</dependency>
 				<dependency>
-					<groupId>org.zeromq</groupId>
+					<groupId>com.github.anthill-utils</groupId>
 					<artifactId>jzmq-jni</artifactId>
-					<version>3.1.1-SNAPSHOT</version>
+					<version>3.1.2</version>
 					<scope>compile</scope>
 				</dependency>
 			</dependencies>

@@ -50,34 +50,19 @@ ServerController.inited(settings, new GameServerController.InitedHandler()
 
 4. Once a Player connected, call `ServerController.joined` and one a Player left, call `ServerController.left`.
 
-## Installation
+## Dependencies
 
-You would need to install [JZMQ](https://github.com/zeromq/jzmq) first:
+On Linux and Mac OS X, you would need to install ZeroMQ library to your system for the whole package to work.
 
-Install build tools first (assuming Debian):
+Linux:
 ```
-apt install -y g++ pkg-config libtool autoconf automake make
-```
-
-Next, install the zmq library:
-```
-apt install -y libzmq3-dev 
+apt install -y libzmq5-dev
 ```
 
-Next, install the jzmq into the local maven:
+Mac Os X:
 ```
-git clone https://github.com/zeromq/jzmq.git
-cd jzmq/jzmq-jni/
-./autogen.sh
-./configure --prefix=/usr
-make
-make install
-cd ..
-mvn install -Dgpg.skip=true
+brew install zmq
 ```
-
-You would also need to set `JAVA_LIBRARY_PATH` environment variable to 
-`/usr/lib` for the application to work.
 
 #### Gradle
 
