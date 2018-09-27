@@ -50,7 +50,7 @@ ServerController.inited(settings, new GameServerController.InitedHandler()
 
 4. Once a Player connected, call `ServerController.joined` and one a Player left, call `ServerController.left`.
 
-## Dependencies
+## Installation
 
 On Linux and Mac OS X, you would need to install ZeroMQ library to your system for the whole package to work.
 
