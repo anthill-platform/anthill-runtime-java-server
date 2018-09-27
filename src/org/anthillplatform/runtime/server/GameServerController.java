@@ -72,7 +72,7 @@ public abstract class GameServerController
 
         this.context = new ZContext();
         this.socket = context.createSocket(ZMQ.PAIR);
-        this.socket.connect("ipc://" + socket);
+        this.socket.connect(socket);
 
         this.rpc = new JsonRPC()
         {
