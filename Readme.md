@@ -56,7 +56,7 @@ On Linux and Mac OS X, you would need to install ZeroMQ library to your system f
 
 Linux:
 ```
-apt install -y libzmq5-dev
+apt install -y libzmq3-dev
 ```
 
 Mac Os X:
@@ -81,7 +81,7 @@ allprojects {
 
 ```
 dependencies {
-    compile 'com.github.anthill-platform:anthill-runtime-java-server:0.1.7'
+    compile 'com.github.anthill-platform:anthill-runtime-java-server:0.1.8'
 }
 ```
 
@@ -104,6 +104,6 @@ dependencies {
 <dependency>
     <groupId>com.github.anthill-platform</groupId>
     <artifactId>anthill-runtime-java-server</artifactId>
-    <version>0.1.7</version>
+    <version>0.1.8</version>
 </dependency>
 ```
