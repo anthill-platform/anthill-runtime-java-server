@@ -81,7 +81,7 @@ allprojects {
 
 ```
 dependencies {
-    compile 'com.github.anthill-platform:anthill-runtime-java-server:0.1.6'
+    compile 'com.github.anthill-platform:anthill-runtime-java-server:0.1.7'
 }
 ```
 
