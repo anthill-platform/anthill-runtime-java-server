@@ -10,7 +10,7 @@
 	<groupId>com.github.anthill-platform</groupId>
 	<artifactId>anthill-runtime-java-server</artifactId>
 	<packaging>jar</packaging>
-	<version>0.1.7</version>
+	<version>0.1.8</version>
 
 	<name>Anthill Java Server Runtime</name>
 	<description>Server extention for Java Runtime for Anthill Platform</description>
