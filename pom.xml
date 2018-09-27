@@ -10,9 +10,9 @@
 	<groupId>com.github.anthill-platform</groupId>
 	<artifactId>anthill-runtime-java-server</artifactId>
 	<packaging>jar</packaging>
-	<version>0.1.6</version>
+	<version>0.1.7</version>
 
-	<name>OnlileLib Server</name>
+	<name>Anthill Java Server Runtime</name>
 	<description>Server extention for Java Runtime for Anthill Platform</description>
 	<url>https://github.com/anthill-platform/anthill-runtime-java-server</url>
 	<issueManagement>
@@ -54,6 +54,44 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
+	<profiles>
+		<profile>
+			<id>platform-windows</id>
+			<activation>
+				<os>
+					<family>windows</family>
+				</os>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>org.zeromq</groupId>
+					<artifactId>jeromq</artifactId>
+					<version>0.4.0</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>platform-others</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>org.zeromq</groupId>
+					<artifactId>jzmq</artifactId>
+					<version>3.1.1-SNAPSHOT</version>
+					<scope>compile</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.zeromq</groupId>
+					<artifactId>jzmq-jni</artifactId>
+					<version>3.1.1-SNAPSHOT</version>
+					<scope>compile</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
 
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -102,18 +140,6 @@
 			<groupId>com.github.anthill-platform</groupId>
 			<artifactId>anthill-runtime-java</artifactId>
 			<version>0.1.6</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.zeromq</groupId>
-			<artifactId>jzmq</artifactId>
-			<version>3.1.1-SNAPSHOT</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.zeromq</groupId>
-			<artifactId>jzmq-jni</artifactId>
-			<version>3.1.1-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>

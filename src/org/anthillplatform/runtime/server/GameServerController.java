@@ -8,9 +8,6 @@ import org.json.JSONObject;
 import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
 
-import java.nio.charset.Charset;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Game Server Controller
@@ -100,7 +97,7 @@ public abstract class GameServerController
     {
         String data;
 
-        while ((data = socket.recvStr(ZMQ.NOBLOCK, Charset.defaultCharset())) != null)
+        while ((data = socket.recvStr(ZMQ.NOBLOCK)) != null)
         {
             received(data);
         }
