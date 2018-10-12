@@ -54,9 +54,9 @@ ServerController.inited(settings, new GameServerController.InitedHandler()
 
 On Linux and Mac OS X, you would need to install ZeroMQ library to your system for the whole package to work.
 
-Linux:
+Linux (Debian stretch):
 ```
-apt install -y libzmq3-dev
+apt install -y libzmq5-dev
 ```
 
 Mac Os X:
